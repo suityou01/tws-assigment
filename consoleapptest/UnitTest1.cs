@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using consoleapp.lib;
 
 namespace consoleapptest;
@@ -39,5 +40,25 @@ public class UnitTest1
     {
         var s = new Sphere(10);
         Assert.AreEqual(Math.Round(s.getVolume(),2), 1256.64);
+    }
+
+    [TestMethod]
+    public void TestAbstractShapeFactory()
+    {
+        double [] dimensions = new double[1];
+        dimensions[0] = 15;
+        IFigure? shape = AbstractShapeFactory.buildShape("Circle", dimensions);
+        Assert.IsInstanceOfType(shape, typeof(Circle));       
+    }
+
+    [TestMethod]
+    public void TestAbstractReporterFactory()
+    {
+        Circle c = new Circle(15);
+        Sphere s = new Sphere(15);
+        IReporter? reporter = AbstractReporterFactory.getReporter(c);
+        Assert.IsInstanceOfType(reporter, typeof(AreaReporter));       
+        reporter = AbstractReporterFactory.getReporter(s);
+        Assert.IsInstanceOfType(reporter, typeof(VolumeReporter));       
     }
 }
