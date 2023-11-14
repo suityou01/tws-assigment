@@ -1,6 +1,6 @@
 using consoleapp.lib;
 
-public class Sphere : ISolidFigure
+public class Sphere : SolidFigure
 {
     private double _radius;
     public Sphere(double radius)
@@ -8,7 +8,7 @@ public class Sphere : ISolidFigure
         this._radius = radius;
     }
 
-    public double getVolume()
+    public override double getVolume()
     {
         return 4 * Math.PI * Math.Pow(this._radius,2);
     }

@@ -1,6 +1,6 @@
 using consoleapp.lib;
 
-public class Rectangle : IFlatFigure
+public class Rectangle : FlatFigure, IFigure
 {
     private double _width = 0;
     private double _length = 0;
@@ -8,7 +8,7 @@ public class Rectangle : IFlatFigure
         this._width = width;
         this._length = length;
     }
-    public double getArea()
+    public override double getArea()
     {
         return this._width * this._length;
     }
